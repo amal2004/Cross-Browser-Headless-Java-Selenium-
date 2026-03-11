@@ -1,4 +1,4 @@
-package autm.headless.parallel.driver;
+package autm.amalwee.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,13 +13,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 /**
  * DriverFactory class is responsible for creating and managing
  * WebDriver instances for different browsers.
- * 
- * It supports parallel execution using ThreadLocal so each test
- * thread gets its own WebDriver instance.
+ * It supports parallel execution using ThreadLocal.
  */
 public class DriverFactory {
 
-	// ThreadLocal ensures each parallel test thread gets its own WebDriver
 	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	
 	/**
@@ -37,47 +34,38 @@ public class DriverFactory {
 
 		// Chrome browser setup
 		case "chrome":
+			
 			WebDriverManager.chromedriver().setup();
-
 			ChromeOptions chromeOptions = new ChromeOptions();
-
 			// Enable headless mode if specified
 			if (headless) {
 				chromeOptions.addArguments("--headless=new");
 			}
-
 			// Disable GPU and set window size
 			chromeOptions.addArguments("--disable-gpu");
 			chromeOptions.addArguments("--window-size=1920,1080");
-
 			webdriver = new ChromeDriver(chromeOptions);
 			break;
 
 		// Firefox browser setup
 		case "firefox":
 			WebDriverManager.firefoxdriver().setup();
-
 			FirefoxOptions firefoxOptions = new FirefoxOptions();
-
+			
 			// Enable Firefox headless mode
 			if (headless) {
 				firefoxOptions.addArguments("-headless");
 			}
-
 			webdriver = new FirefoxDriver(firefoxOptions);
 			break;
 
 		// Edge browser setup
 		case "edge":
-
-			// Using local Edge driver executable
+			
 			//WebDriverManager.edgedriver().setup();
-			System.setProperty(
-					"webdriver.edge.driver",
-					System.getProperty("user.dir") +
-					"\\src\\main\\resources\\msedgedriver.exe"
-			);
-
+			
+			// Using local Edge driver executable
+			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\src\\main\\resources\\msedgedriver.exe");
 			EdgeOptions edgeOptions = new EdgeOptions();
 
 			// Enable Edge headless mode
@@ -93,7 +81,7 @@ public class DriverFactory {
 			throw new RuntimeException("Browser not supported: " + browser);
 		}
 
-		// Store driver in ThreadLocal for parallel execution
+		// Store driver in ThreadLocal object for parallel execution
 		driver.set(webdriver);
 
 		// Return thread-safe driver instance

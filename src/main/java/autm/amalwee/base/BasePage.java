@@ -1,4 +1,4 @@
-package autm.headless.parallel.base;
+package autm.amalwee.base;
 
 import java.time.Duration;
 import org.openqa.selenium.TimeoutException;
@@ -10,10 +10,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * BasePage class provides common reusable methods for all Page Object classes.
- * It wraps common Selenium WebDriver actions such as clicking, typing,
- * retrieving text, waiting for elements, and navigation.
+ * BasePage contains reusable methods for Page Object classes.
+ * It wraps common Selenium WebDriver actions like click, type,
+ * get text, wait for elements, and navigation.
  */
+
 public class BasePage {
 
 	// WebDriver instance used to interact with the browser
@@ -24,6 +25,7 @@ public class BasePage {
 
 	/**
 	 * Constructor initializes WebDriver and WebDriverWait
+	 * 
 	 *  @param driver Selenium WebDriver instance
 	 */
 	public BasePage(WebDriver driver) {
@@ -33,6 +35,7 @@ public class BasePage {
 
 	/**
 	 * Clicks on a web element once it becomes clickable
+	 * 
 	 * @param locator By locator used to find the element
 	 */
 	protected void click(By locator) {
@@ -41,6 +44,7 @@ public class BasePage {
 
 	/**
 	 * Types text into an input field after clearing any existing text
+	 * 
 	 * @param locator By locator of the input field
 	 * @param text Text to be entered
 	 */
@@ -62,7 +66,6 @@ public class BasePage {
 	
 	/**
 	 * Navigates the browser to a specific URL
-	 * 
 	 * @param url URL to navigate to
 	 */
 	protected void navigateTo(String url) {

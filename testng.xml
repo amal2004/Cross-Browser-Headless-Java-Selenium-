@@ -6,7 +6,7 @@
         <parameter name="browser" value="chrome"/>
         <parameter name="headless" value="true"/>
         <classes>
-            <class name="autm.headless.parallel.tests.RegisterTest"/>
+            <class name="autm.amalwee.tests.RegisterTest"/>
         </classes>
     </test>
 
@@ -14,7 +14,7 @@
         <parameter name="browser" value="firefox"/>
         <parameter name="headless" value="true"/>
         <classes>
-            <class name="autm.headless.parallel.tests.RegisterTest"/>
+            <class name="autm.amalwee.tests.RegisterTest"/>
         </classes>
     </test>
 
@@ -22,7 +22,7 @@
         <parameter name="browser" value="edge"/>
         <parameter name="headless" value="true"/>
         <classes>
-            <class name="autm.headless.parallel.tests.RegisterTest"/>
+            <class name="autm.amalwee.tests.RegisterTest"/>
         </classes>
     </test>
 

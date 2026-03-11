@@ -1,15 +1,13 @@
-package autm.headless.parallel.base;
+package autm.amalwee.base;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
-import autm.headless.parallel.driver.DriverFactory;
+import autm.amalwee.driver.DriverFactory;
 
 /**
  * BaseTest class provides common setup and teardown functionality
- * for all TestNG test classes.
- * 
- * It initializes the WebDriver before each test method and
+ * for all TestNG test classes. It initializes the WebDriver before each test method and
  * closes the driver after test execution.
  */
 public class BaseTest {
@@ -26,9 +24,8 @@ public class BaseTest {
 	 */
 	@Parameters({"browser", "headless"})
 	@BeforeMethod
-	public void setUp(@Optional("chrome") String browser,
-					  @Optional("false") String headless) {
-		
+	public void setUp(@Optional("chrome") String browser, @Optional("false") String headless) {
+					  
 		// Initialize driver using DriverFactory
 		driver = DriverFactory.initDriver(browser, Boolean.parseBoolean(headless));
 		
@@ -36,9 +33,8 @@ public class BaseTest {
 		driver.manage().window().maximize();
 		
 		// Navigate to the application register page
-		//driver.get("http://localhost:5000/register");
-		driver.get("https://demo.eshiply.me/register");
-		
+		driver.get("http://localhost:5000/register");
+		//driver.get("https://demo.eshiply.me/register");
 	}
 	
 	
